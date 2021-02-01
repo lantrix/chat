@@ -1,0 +1,2 @@
+dendrite_flags=-config /home/dendrite/dendrite.yaml
+dendrite_user="dendrite"

@@ -137,12 +137,12 @@ adduser -group wheel -class daemon -batch dendrite
 ## Dendrite Install
 
  * Build dendrite https://github.com/matrix-org/dendrite#get-started
- * Set binary permissions `chown dendrite:wheen ~/dendrite/bin/* && chmod 755 ~/dendrite/bin/*`
- * Copy `~/dendrite/bin/*` to `/usr/local/bin`
+ * Set binary permissions `chown dendrite:wheel ~dendrite/bin/* && chmod 755 ~dendrite/bin/*`
+ * Copy `~dendrite/bin/*` to `/usr/local/bin`
 
 ## Dendrite Config
 
- * Copy [`dendrite.yaml`](./dendrite-example.yaml) to `~/dendrite/dentrite.yml`
+ * Copy [`dendrite.yaml`](./dendrite-example.yaml) to `~dendrite/dentrite.yml`
    - Configure the `server_name` in the config
    - Set all the postgres connection strings `connection_string`
 

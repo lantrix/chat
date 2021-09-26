@@ -137,8 +137,26 @@ adduser -group wheel -class daemon -batch dendrite
 ## Dendrite Install
 
  * Build dendrite https://github.com/matrix-org/dendrite#get-started
- * Set binary permissions `chown dendrite:wheel ~dendrite/bin/* && chmod 755 ~dendrite/bin/*`
- * Copy `~dendrite/bin/*` to `/usr/local/bin`
+
+```
+git clone https://github.com/matrix-org/dendrite
+cd dendrite
+./build.sh
+```
+
+ * Copy binaries and set binary permissions:
+
+```
+for i in `ls bin/`; do echo $i ; doas cp bin/$i /usr/local/bin/ && doas chown dendrite:wheel /usr/local/bin/$i ;done
+```
+
+## Dendrite Database
+
+Outside the scope of this create a PostgreSQL DB for dendrite, you will need the connection string for the config:
+
+```
+postgres://dendrite:password@dendritedb.local/dendrite
+```
 
 ## Dendrite Config
 
@@ -149,7 +167,7 @@ adduser -group wheel -class daemon -batch dendrite
 Generate a Matrix signing key for federation (required):
 
 ```shell
-$ su - dendrite -c "/usr/local/bin/generate-keys --private-key /home/dendrite/matrix_key.pem"
+$ doas su - dendrite -c "/usr/local/bin/generate-keys --private-key /home/dendrite/matrix_key.pem"
 
 Created private key file: /home/dendrite/matrix_key.pem
 ``` 

@@ -141,5 +141,5 @@ adduser -group wheel -class daemon -batch matrix
 
 From here you can install and configure:
 
- - [Synapse](./synapse/README.md)
- - [Dendrite](./dendrite/README.md)
+ - [Synapse](./synapse/)
+ - [Dendrite](./dendrite/)
